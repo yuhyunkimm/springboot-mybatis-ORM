@@ -7,10 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto {
+public class BoardDto {
     private Integer id;
-    private String username;
-    private String password;
-    private String email;
+    private String title;
+    private String content;
+    // private UserDto user;
     private Timestamp createdAt;
 }

@@ -5,6 +5,34 @@
 
 <mapper namespace="shop.mtcoding.mybatisdto.model.board.BoardRepository">
 
+    <resultMap id="boardDto" type="shop.mtcoding.mybatisdto.dto.BoardDto">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <resultMap id="userDto" type="shop.mtcoding.mybatisdto.dto.UserDto">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <resultMap id="boardJoinUserDto" type="shop.mtcoding.mybatisdto.dto.boardJoinUserDto">
+        <association property="board" resultMap="BoardDto"/> 
+        <association property="user" resultMap="UserDto"/>
+    </resultMap>
+
+    <!-- 아래 resultType이랑 resultMap id와 동일 해야한다 -->
+    <select id="findByIdJoinUser2" resultMap="shop.mtcoding.mybatisdto.dto.boardJoinUserDto">
+        select *
+        from board_tb b inner join user_tb u
+        ON b.user_id = u.id 
+        where b.id = #{id}
+    </select>
+
     <select id="findByIdJoinUser" resultType="shop.mtcoding.mybatisdto.dto.BoardDetailOutDto.Board">
         select b.*, u.id user_id, u.username user_username, u.password user_password, u.email user_email, u.created_at user_created_at,
         from board_tb b inner join user_tb u
