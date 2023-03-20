@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class BoardDetailOutDto {
+public class BoardJoinUserDtoV1Flattern {
     private Integer id;
     private String title;
     private String content;

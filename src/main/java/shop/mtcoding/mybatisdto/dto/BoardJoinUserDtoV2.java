@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ResponseDto<T> {
-    private String msg;
-    private T data;
+public class BoardJoinUserDtoV2 {
+    private BoardDto board;
+    private UserDto user;
 }
