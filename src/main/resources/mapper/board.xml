@@ -5,6 +5,27 @@
 
 <mapper namespace="shop.mtcoding.mybatisdto.model.board.BoardRepository">
 
+    <resultMap id="boardJoinUserDto2" type="shop.mtcoding.mybatisdto.dto.boardJoinUserDto2">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createdAt" column="created_at"/>
+        <association property="user" javaTape="shop.mtcoding.mybatisdto.dto.boardJoinUserDto2$UserDto">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+            <result property="email" column="email"/>
+            <result property="createdAt" column="created_at"/>
+        </association>
+    </resultMap>
+
+    <select id="findByIdJoinUser3" resultMap="boardJoinUserDto2">
+        select *
+        from board_tb b inner join user_tb u
+        ON b.user_id = u.id 
+        where b.id = #{id}
+    </select>
+
     <resultMap id="boardDto" type="shop.mtcoding.mybatisdto.dto.BoardDto">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
@@ -13,6 +34,7 @@
     </resultMap>
 
     <resultMap id="userDto" type="shop.mtcoding.mybatisdto.dto.UserDto">
+        <!-- id 값만 id 나머지는 result -->
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
@@ -23,6 +45,8 @@
     <resultMap id="boardJoinUserDto" type="shop.mtcoding.mybatisdto.dto.boardJoinUserDto">
         <association property="board" resultMap="BoardDto"/> 
         <association property="user" resultMap="UserDto"/>
+        <!-- <collection property -->
+        <!-- List<> -->
     </resultMap>
 
     <!-- 아래 resultType이랑 resultMap id와 동일 해야한다 -->
