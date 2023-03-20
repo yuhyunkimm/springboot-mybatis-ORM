@@ -26,7 +26,7 @@
     </resultMap>
 
     <!-- 아래 resultType이랑 resultMap id와 동일 해야한다 -->
-    <select id="findByIdJoinUser2" resultMap="shop.mtcoding.mybatisdto.dto.boardJoinUserDto">
+    <select id="findByIdJoinUser2" resultMap="boardJoinUserDto">
         select *
         from board_tb b inner join user_tb u
         ON b.user_id = u.id 
