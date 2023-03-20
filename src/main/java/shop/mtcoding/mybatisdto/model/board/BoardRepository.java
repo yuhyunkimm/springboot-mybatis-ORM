@@ -1,9 +1,8 @@
 package shop.mtcoding.mybatisdto.model.board;
 
-import org.apache.ibatis.annotations.Mapper;
-import shop.mtcoding.mybatisdto.model.user.User;
-
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BoardRepository {
