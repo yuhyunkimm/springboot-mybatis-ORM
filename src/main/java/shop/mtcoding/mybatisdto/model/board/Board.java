@@ -1,10 +1,9 @@
 package shop.mtcoding.mybatisdto.model.board;
 
+import java.sql.Timestamp;
+
 import lombok.Getter;
 import lombok.Setter;
-import shop.mtcoding.mybatisdto.model.user.User;
-
-import java.sql.Timestamp;
 
 @Getter
 @Setter
